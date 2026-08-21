@@ -1,0 +1,39 @@
+function iniciarJogo() {
+  const escolhaTexto = prompt("Escolha uma opção: pedra, papel ou tesoura");
+
+  const escolhaJogador = escolhaTexto.toLowerCase();
+
+  if (escolhaJogador !== "pedra" && escolhaJogador !== "papel" && escolhaJogador !== "tesoura") {
+    alert("Opção inválida. Digite pedra, papel ou tesoura.");
+    return;
+  }
+
+  const numeroComputador = Math.floor(Math.random() * 3);
+  let escolhaComputador = "";
+
+  if (numeroComputador === 0) {
+    escolhaComputador = "pedra";
+  } else if (numeroComputador === 1) {
+    escolhaComputador = "papel";
+  } else {
+    escolhaComputador = "tesoura";
+  }
+
+  let resultado = "";
+
+  if (escolhaJogador === escolhaComputador) {
+    resultado = "Empate!";
+  } else if (
+    (escolhaJogador === "pedra" && escolhaComputador === "tesoura") ||
+    (escolhaJogador === "papel" && escolhaComputador === "pedra") ||
+    (escolhaJogador === "tesoura" && escolhaComputador === "papel")
+  ) {
+    resultado = "Você venceu!";
+  } else {
+    resultado = "Você perdeu!";
+  }
+
+  alert("Computador escolheu: " + escolhaComputador + "\n" + resultado);
+}
+
+iniciarJogo();
